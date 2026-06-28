@@ -1,0 +1,28 @@
+# Inception Project Tasks
+
+- `[x]` Build the skeleton folder structure
+- `[ ]` **Phase 1: Setup and Environment**
+  - `[ ]` VM Preparation and Docker installation
+  - `[ ]` Configure hosts file
+  - `[ ]` Define environment variables and setup secrets
+- `[ ]` **Phase 2: NGINX Service**
+  - `[ ]` Write NGINX Dockerfile
+  - `[ ]` Generate TLS certificate
+  - `[ ]` Configure NGINX for HTTPS and PHP proxy
+- `[ ]` **Phase 3: MariaDB Service**
+  - `[ ]` Write MariaDB Dockerfile
+  - `[ ]` Create database initialization script
+  - `[ ]` Configure database users and test locally
+- `[ ]` **Phase 4: WordPress + PHP-FPM Service**
+  - `[ ]` Write WordPress Dockerfile
+  - `[ ]` Configure WP-CLI installation
+  - `[ ]` Create WordPress initialization and config script
+  - `[ ]` Adjust PHP-FPM port configuration
+- `[ ]` **Phase 5: Docker Compose & Network**
+  - `[ ]` Write `docker-compose.yml`
+  - `[ ]` Set up custom bridge network and volumes
+- `[ ]` **Phase 6: Makefile and Documentation**
+  - `[ ]` Write Makefile rules (`all`, `clean`, `fclean`, `re`)
+  - `[ ]` Complete `README.md`
+  - `[ ]` Write `USER_DOC.md`
+  - `[ ]` Write `DEV_DOC.md`
