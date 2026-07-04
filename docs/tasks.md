@@ -1,23 +1,23 @@
 # Inception Project Tasks
 
 - `[x]` Build the skeleton folder structure
-- `[ ]` **Phase 1: Setup and Environment**
-  - `[ ]` VM Preparation and Docker installation
-  - `[ ]` Configure hosts file
-  - `[ ]` Define environment variables and setup secrets
-- `[ ]` **Phase 2: NGINX Service**
-  - `[ ]` Write NGINX Dockerfile
-  - `[ ]` Generate TLS certificate
-  - `[ ]` Configure NGINX for HTTPS and PHP proxy
-- `[ ]` **Phase 3: MariaDB Service**
-  - `[ ]` Write MariaDB Dockerfile
-  - `[ ]` Create database initialization script
+- `[x]` **Phase 1: Setup and Environment**
+  - `[x]` VM Preparation and Docker installation
+  - `[x]` Configure hosts file
+  - `[x]` Define environment variables and setup secrets
+- `[ ]` **Phase 2: MariaDB Service**
+  - `[x]` Write MariaDB Dockerfile (Debian)
+  - `[x]` Create database initialization script
   - `[ ]` Configure database users and test locally
-- `[ ]` **Phase 4: WordPress + PHP-FPM Service**
-  - `[ ]` Write WordPress Dockerfile
+- `[ ]` **Phase 3: WordPress + PHP-FPM Service**
+  - `[ ]` Write WordPress Dockerfile (Debian)
   - `[ ]` Configure WP-CLI installation
   - `[ ]` Create WordPress initialization and config script
   - `[ ]` Adjust PHP-FPM port configuration
+- `[ ]` **Phase 4: NGINX Service**
+  - `[ ]` Write NGINX Dockerfile (Debian)
+  - `[ ]` Generate TLS certificate
+  - `[ ]` Configure NGINX for HTTPS and PHP proxy
 - `[ ]` **Phase 5: Docker Compose & Network**
   - `[ ]` Write `docker-compose.yml`
   - `[ ]` Set up custom bridge network and volumes
