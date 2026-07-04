@@ -1,0 +1,20 @@
+# Secrets and environment variables (Critical)
+secrets/
+srcs/.env
+.env
+
+# Docker data directories (Crucial - never commit your actual live database storage!)
+srcs/requirements/bonuses/*/data/
+srcs/requirements/mariadb/data/
+srcs/requirements/wordpress/data/
+wp-data/
+db-data/
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# Text Editor / IDE configs
+.vscode/
+.idea/
+*.swp
