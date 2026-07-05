@@ -14,10 +14,10 @@
   - `[x]` Configure WP-CLI installation
   - `[x]` Create WordPress initialization and config script
   - `[x]` Adjust PHP-FPM port configuration
-- `[ ]` **Phase 4: NGINX Service**
-  - `[ ]` Write NGINX Dockerfile (Debian)
-  - `[ ]` Generate TLS certificate
-  - `[ ]` Configure NGINX for HTTPS and PHP proxy
+- `[x]` **Phase 4: NGINX Service**
+  - `[x]` Write NGINX Dockerfile (Debian)
+  - `[x]` Generate TLS certificate
+  - `[x]` Configure NGINX for HTTPS and PHP proxy
 - `[ ]` **Phase 5: Docker Compose & Network**
   - `[ ]` Write `docker-compose.yml`
   - `[ ]` Set up custom bridge network and volumes
