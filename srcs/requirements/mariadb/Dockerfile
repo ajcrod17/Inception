@@ -6,8 +6,10 @@ RUN apt-get update -y && \
     rm -rf /var/lib/apt/lists/*
 
 # Configure MariaDB to listen on all interfaces
-RUN sed -i "s/bind-address            = 127.0.0.1/bind-address            = 0.0.0.1/" /etc/mysql/mariadb.conf.d/50-server.cnf || \
-    sed -i "s/bind-address            = 127.0.0.1/bind-address            = 0.0.0.0/" /etc/mysql/mariadb.conf.d/50-server.cnf
+RUN sed -i "s/bind-address            = 127.0.0.1/bind-address            = 0.0.0.0/" /etc/mysql/mariadb.conf.d/50-server.cnf
+
+# Remove the default database to force our initialization script to run
+RUN rm -rf /var/lib/mysql/*
 
 # Create the socket directory
 RUN mkdir -p /run/mysqld && chown -R mysql:mysql /run/mysqld

@@ -13,15 +13,20 @@ if [ ! -d "/var/lib/mysql/mysql" ]; then
     sleep 5
 
     echo "Creating users and database..."
+    
+    # Read secrets and strip any trailing newlines from echo
+    DB_PASS=$(cat /run/secrets/db_password | tr -d '\n')
+    DB_ROOT_PASS=$(cat /run/secrets/db_root_password | tr -d '\n')
+    
     # Execute SQL commands to set up the database and users
     mysql -u root -e "CREATE DATABASE IF NOT EXISTS \`${MYSQL_DATABASE}\`;"
-    mysql -u root -e "CREATE USER IF NOT EXISTS '${MYSQL_USER}'@'%' IDENTIFIED BY '$(cat /run/secrets/db_password)'; "
+    mysql -u root -e "CREATE USER IF NOT EXISTS '${MYSQL_USER}'@'%' IDENTIFIED BY '${DB_PASS}';"
     mysql -u root -e "GRANT ALL PRIVILEGES ON \`${MYSQL_DATABASE}\`.* TO '${MYSQL_USER}'@'%';"
-    mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '$(cat /run/secrets/db_root_password)';"
-    mysql -u root -p"$(cat /run/secrets/db_root_password)" -e "FLUSH PRIVILEGES;"
+    mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${DB_ROOT_PASS}';"
+    mysql -u root -p"${DB_ROOT_PASS}" -e "FLUSH PRIVILEGES;"
 
     echo "Shutting down background MariaDB..."
-    mysqladmin -u root -p"$(cat /run/secrets/db_root_password)" shutdown
+    mysqladmin -u root -p"${DB_ROOT_PASS}" shutdown
     wait "$pid"
 fi
 
