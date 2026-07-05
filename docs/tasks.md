@@ -9,11 +9,11 @@
   - `[x]` Write MariaDB Dockerfile (Debian)
   - `[x]` Create database initialization script
   - `[x]` Configure database users and test locally
-- `[ ]` **Phase 3: WordPress + PHP-FPM Service**
-  - `[ ]` Write WordPress Dockerfile (Debian)
-  - `[ ]` Configure WP-CLI installation
-  - `[ ]` Create WordPress initialization and config script
-  - `[ ]` Adjust PHP-FPM port configuration
+- `[x]` **Phase 3: WordPress + PHP-FPM Service**
+  - `[x]` Write WordPress Dockerfile (Debian)
+  - `[x]` Configure WP-CLI installation
+  - `[x]` Create WordPress initialization and config script
+  - `[x]` Adjust PHP-FPM port configuration
 - `[ ]` **Phase 4: NGINX Service**
   - `[ ]` Write NGINX Dockerfile (Debian)
   - `[ ]` Generate TLS certificate
