@@ -5,10 +5,10 @@
   - `[x]` VM Preparation and Docker installation
   - `[x]` Configure hosts file
   - `[x]` Define environment variables and setup secrets
-- `[ ]` **Phase 2: MariaDB Service**
+- `[x]` **Phase 2: MariaDB Service**
   - `[x]` Write MariaDB Dockerfile (Debian)
   - `[x]` Create database initialization script
-  - `[ ]` Configure database users and test locally
+  - `[x]` Configure database users and test locally
 - `[ ]` **Phase 3: WordPress + PHP-FPM Service**
   - `[ ]` Write WordPress Dockerfile (Debian)
   - `[ ]` Configure WP-CLI installation
