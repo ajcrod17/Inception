@@ -1,4 +1,4 @@
-FROM debian:bullseye
+FROM debian:Bookworm
 
 # Install dependencies:
     # php7.4-fpm: Installs the PHP process manager engine,

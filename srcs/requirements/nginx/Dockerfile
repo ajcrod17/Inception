@@ -1,4 +1,4 @@
-FROM debian:bullseye
+FROM debian:Bookworm
 
 # Install NGINX web server and OpenSSL for certificate generation
 RUN apt-get update -y && \
