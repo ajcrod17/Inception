@@ -22,7 +22,7 @@
   - `[x]` Write `docker-compose.yml`
   - `[x]` Set up custom bridge network and volumes
 - `[ ]` **Phase 6: Makefile and Documentation**
-  - `[ ]` Write Makefile rules (`all`, `clean`, `fclean`, `re`)
+  - `[x]` Write Makefile rules (`all`, `clean`, `fclean`, `re`)
   - `[ ]` Complete `README.md`
   - `[ ]` Write `USER_DOC.md`
   - `[ ]` Write `DEV_DOC.md`
