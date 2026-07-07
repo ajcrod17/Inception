@@ -18,9 +18,9 @@
   - `[x]` Write NGINX Dockerfile (Debian)
   - `[x]` Generate TLS certificate
   - `[x]` Configure NGINX for HTTPS and PHP proxy
-- `[ ]` **Phase 5: Docker Compose & Network**
-  - `[ ]` Write `docker-compose.yml`
-  - `[ ]` Set up custom bridge network and volumes
+- `[x]` **Phase 5: Docker Compose & Network**
+  - `[x]` Write `docker-compose.yml`
+  - `[x]` Set up custom bridge network and volumes
 - `[ ]` **Phase 6: Makefile and Documentation**
   - `[ ]` Write Makefile rules (`all`, `clean`, `fclean`, `re`)
   - `[ ]` Complete `README.md`

@@ -1,4 +1,4 @@
-FROM debian:Bookworm
+FROM debian:bookworm
 
 # Install MariaDB inside the image
 RUN apt-get update -y && \
