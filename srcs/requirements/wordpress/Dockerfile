@@ -1,4 +1,4 @@
-FROM debian:Bookworm
+FROM debian:bookworm
 
 # Install dependencies:
     # php7.4-fpm: Installs the PHP process manager engine,
@@ -7,7 +7,7 @@ FROM debian:Bookworm
     # wget (for downloading wp-cli),
     # mariadb-client (to ping the database)
 RUN apt-get update -y && \
-    apt-get install -y php7.4-fpm php7.4-mysqli wget mariadb-client && \
+    apt-get install -y php8.2-fpm php8.2-mysqli wget mariadb-client && \
     rm -rf /var/lib/apt/lists/*
 
 # Download WP-CLI and make it globally accessible
@@ -17,7 +17,7 @@ RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.ph
 
 # Configure PHP-FPM to listen on TCP port 9000 instead of a local Unix socket
 # This allows NGINX to forward requests to this container over the Docker network
-RUN sed -i 's/listen = \/run\/php\/php7.4-fpm.sock/listen = 9000/g' /etc/php/7.4/fpm/pool.d/www.conf
+RUN sed -i 's/listen = \/run\/php\/php8.2-fpm.sock/listen = 9000/g' /etc/php/8.2/fpm/pool.d/www.conf
 
 # Create the PID directory for PHP-FPM so it can start successfully
 RUN mkdir -p /run/php

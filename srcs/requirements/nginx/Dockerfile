@@ -1,4 +1,4 @@
-FROM debian:Bookworm
+FROM debian:bookworm
 
 # Install NGINX web server and OpenSSL for certificate generation
 RUN apt-get update -y && \

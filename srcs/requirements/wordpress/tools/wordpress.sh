@@ -60,4 +60,4 @@ echo "Starting PHP-FPM in the foreground..."
 # Launches the PHP FastCGI manager in the foreground (-F). This keeps the daemon
 # running actively, listening on port 9000 for Nginx requests, and preventing
 # the Docker container from exiting.
-exec php-fpm7.4 -F
+exec php-fpm8.2 -F
