@@ -2,6 +2,7 @@
 secrets/
 srcs/.env
 .env
+docs/
 
 # Docker data directories (Crucial - never commit your actual live database storage!)
 srcs/requirements/bonuses/*/data/
