@@ -21,8 +21,8 @@
 - `[x]` **Phase 5: Docker Compose & Network**
   - `[x]` Write `docker-compose.yml`
   - `[x]` Set up custom bridge network and volumes
-- `[ ]` **Phase 6: Makefile and Documentation**
+- `[x]` **Phase 6: Makefile and Documentation**
   - `[x]` Write Makefile rules (`all`, `clean`, `fclean`, `re`)
-  - `[ ]` Complete `README.md`
-  - `[ ]` Write `USER_DOC.md`
-  - `[ ]` Write `DEV_DOC.md`
+  - `[x]` Complete `README.md`
+  - `[x]` Write `USER_DOC.md`
+  - `[x]` Write `DEV_DOC.md`

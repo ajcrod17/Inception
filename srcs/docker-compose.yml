@@ -3,7 +3,7 @@ services:
   mariadb:
     build: requirements/mariadb
     container_name: mariadb
-    image: mariadb_inception
+    image: mariadb
     restart: always
     env_file: .env
     secrets:
@@ -17,7 +17,7 @@ services:
   wordpress:
     build: requirements/wordpress
     container_name: wordpress
-    image: wordpress_inception
+    image: wordpress
     restart: always
     depends_on:
       - mariadb
@@ -33,7 +33,7 @@ services:
   nginx:
     build: requirements/nginx
     container_name: nginx
-    image: nginx_inception
+    image: nginx
     restart: always
     depends_on:
       - wordpress
