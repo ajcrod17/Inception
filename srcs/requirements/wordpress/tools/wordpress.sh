@@ -48,6 +48,16 @@ if [ ! -f /var/www/html/wp-config.php ]; then
         --user_pass="${USER_PASS}" \
         --allow-root
         
+    echo "Configuring Redis object cache..."
+    # Inject Redis connection details into wp-config.php
+    wp config set WP_REDIS_HOST redis --allow-root
+    wp config set WP_REDIS_PORT 6379 --raw --allow-root
+    wp config set WP_CACHE true --raw --allow-root
+    
+    # Install, activate, and enable the Redis object cache plugin
+    wp plugin install redis-cache --activate --allow-root
+    wp redis enable --allow-root
+        
     # Ensure proper permissions for the NGINX web server to read the files
     # Files downloaded via WP-CLI are owned by root. However, NGINX runs under
     # a limited system user profile called www-data. Recursively changes the
