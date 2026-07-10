@@ -21,6 +21,7 @@ services:
     restart: always
     depends_on:
       - mariadb
+      - redis
     env_file: .env
     secrets:
       - db_password
@@ -64,6 +65,14 @@ services:
     restart: always
     ports:
       - "3000:3000"
+    networks:
+      - inception_net
+
+  redis:
+    build: requirements/redis
+    container_name: redis
+    image: redis
+    restart: always
     networks:
       - inception_net
 
