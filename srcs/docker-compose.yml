@@ -57,6 +57,16 @@ services:
     networks:
       - inception_net
 
+  static_site:
+    build: requirements/static_site
+    container_name: static_site
+    image: static_site
+    restart: always
+    ports:
+      - "3000:3000"
+    networks:
+      - inception_net
+
 networks:
   inception_net:
     driver: bridge
