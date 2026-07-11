@@ -11,6 +11,14 @@ To build and run the infrastructure:
 4. Navigate to `https://<your_login>.42.fr` in your browser. (Note: you must update your `/etc/hosts` file to point this domain to `127.0.0.1`).
 5. Run `make clean` to stop the containers, and `make fclean` to completely purge the volumes and data.
 
+## Bonuses Included
+This project includes 5 additional services demonstrating advanced container orchestration:
+1. **Adminer**: A lightweight database management GUI.
+2. **Static Site**: A custom HTML/CSS showcase served via a Node.js Express server.
+3. **Redis**: An object caching server seamlessly integrated with WordPress.
+4. **GoAccess**: A real-time web log analyzer that parses NGINX access logs into a visual dashboard.
+5. **FTP Server**: A vsftpd container mapping directly to the WordPress volume for external file management.
+
 ## Resources
 - **Docker Official Documentation**: Used for understanding Dockerfiles, volumes, and networking.
 - **NGINX & OpenSSL Documentation**: Used to properly configure the server blocks and generate self-signed certificates.
