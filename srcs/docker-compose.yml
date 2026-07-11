@@ -43,6 +43,7 @@ services:
       - "443:443"
     volumes:
       - wordpress_vol:/var/www/html
+      - nginx_logs:/var/log/nginx
     networks:
       - inception_net
 
@@ -76,6 +77,21 @@ services:
     networks:
       - inception_net
 
+  goaccess:
+    build: requirements/goaccess
+    container_name: goaccess
+    image: goaccess
+    restart: always
+    depends_on:
+      - nginx
+    ports:
+      - "7890:7890"
+    volumes:
+      - wordpress_vol:/var/www/html
+      - nginx_logs:/var/log/nginx:ro
+    networks:
+      - inception_net
+
 networks:
   inception_net:
     driver: bridge
@@ -93,6 +109,8 @@ volumes:
       type: none
       o: bind
       device: ${HOME}/data/wordpress
+
+  nginx_logs:
 
 secrets:
   db_password:
