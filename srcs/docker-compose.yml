@@ -92,6 +92,23 @@ services:
     networks:
       - inception_net
 
+  ftp:
+    build: requirements/ftp
+    container_name: ftp
+    image: ftp
+    restart: always
+    depends_on:
+      - wordpress
+    ports:
+      - "21:21"
+      - "21100-21110:21100-21110"
+    secrets:
+      - ftp_credentials
+    volumes:
+      - wordpress_vol:/var/www/html
+    networks:
+      - inception_net
+
 networks:
   inception_net:
     driver: bridge
@@ -119,3 +136,5 @@ secrets:
     file: ../secrets/db_root_password.txt
   credentials:
     file: ../secrets/credentials.txt
+  ftp_credentials:
+    file: ../secrets/ftp_credentials.txt

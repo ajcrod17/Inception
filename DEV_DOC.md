@@ -15,6 +15,13 @@ The project is orchestrated via `docker-compose.yml` and consists of 3 distinct 
 2. **WordPress (`wordpress`)**: The application layer. Built from Debian Bookworm. Runs PHP 8.2 FastCGI Process Manager (PHP-FPM) in the foreground listening on port 9000. Uses `wp-cli` to automatically install the core, configure the database connection, and create the administrator.
 3. **NGINX (`nginx`)**: The web server and proxy layer. Built from Debian Bookworm. Configured to listen strictly on port 443 with TLSv1.2 and TLSv1.3 protocols. Proxies all PHP requests to the `wordpress` service.
 
+### Bonus Architecture
+4. **Adminer (`adminer`)**: Runs PHP's built-in web server on port 8080 to serve Adminer, connected to the `mariadb` container.
+5. **Static Site (`static_site`)**: Built with a custom Node.js image running an Express server on port 3000 to serve static assets.
+6. **Redis (`redis`)**: An in-memory object cache on port 6379. WordPress connects via WP-CLI initialization scripts to dramatically improve load times.
+7. **GoAccess (`goaccess`)**: Parses NGINX logs in real-time. It mounts a shared `nginx_logs` volume (read-only) and outputs its HTML dashboard directly into the `wordpress_vol` so NGINX can securely serve it over HTTPS.
+8. **FTP Server (`ftp`)**: Runs vsftpd jailing the user to the `wordpress_vol`. To avoid Linux permission conflicts, the FTP user is securely created with UID 33 (matching NGINX's `www-data` profile), granting perfect read/write parity. Port 21 and a passive range (21100-21110) are exposed.
+
 ## Operations and Makefile Usage
 A `Makefile` is provided at the root of the repository to automate deployment:
 - `make all` / `make`: Automatically creates the persistent volume directories on the host (`~/data/mariadb` and `~/data/wordpress`) and runs `docker compose up --build -d`.
