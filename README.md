@@ -8,7 +8,7 @@ To build and run the infrastructure:
 1. Ensure you have Docker and Docker Compose installed.
 2. The `Makefile` at the root of the repository automates the entire process.
 3. Run `make all` to build the images, create the network, and start the containers.
-4. Navigate to `https://<your_login>.42.fr` in your browser. (Note: you must update your `/etc/hosts` file to point this domain to `127.0.0.1`).
+4. Navigate to `https://acaldeir.42.fr` in your browser. (Note: you must update your `/etc/hosts` file to point this domain to `127.0.0.1`).
 5. Run `make clean` to stop the containers, and `make fclean` to completely purge the volumes and data.
 
 ## Bonuses Included
@@ -42,4 +42,10 @@ This project relies on several key technical decisions involving containerizatio
 - **Docker Official Documentation**: Used for understanding Dockerfiles, volumes, and networking.
 - **NGINX & OpenSSL Documentation**: Used to properly configure the server blocks and generate self-signed certificates.
 - **MariaDB & WordPress Documentation**: Used for writing the initialization shell scripts (`--bootstrap` for MariaDB and `wp-cli` for WordPress).
-- **AI Usage**: An AI coding assistant was used heavily throughout this project to help design the architecture, draft the initial Dockerfiles, write the bash initialization scripts securely, and construct this documentation.
+- **AI Usage**:
+  - Clarifying a few doubts about the project requirements and scope
+  - Answering questions about Docker and containerization concepts
+  - Getting a second opinion on the initial project skeleton
+  - Assisting with debugging by explaining error messages and pointing to likely causes
+  - Suggesting possible optimizations to some parts of the scripts
+  - Structuring and drafting this README
