@@ -14,10 +14,25 @@ To build and run the infrastructure:
 ## Bonuses Included
 This project includes 5 additional services demonstrating advanced container orchestration:
 1. **Adminer**: A lightweight database management GUI.
+   - **How to test:** Navigate to `http://127.0.0.1:8080`. Select "MySQL" as the system, "mariadb" as the server, and log in with the root or user credentials from the `secrets/` directory.
 2. **Static Site**: A custom HTML/CSS showcase served via a Node.js Express server.
+   - **How to test:** Navigate to `http://127.0.0.1:3000` to view the custom portfolio site.
 3. **Redis**: An object caching server seamlessly integrated with WordPress.
+   - **How to test:** Open the `/wp-admin` dashboard, go to **Settings -> Redis**, and verify that the status says "Connected".
 4. **GoAccess**: A real-time web log analyzer that parses NGINX access logs into a visual dashboard.
+   - **How to test:** Navigate to `https://acaldeir.42.fr/report.html` to see the real-time traffic statistics for the WordPress site.
 5. **FTP Server**: A vsftpd container mapping directly to the WordPress volume for external file management.
+   - **How to test:** Run the following commands from your host terminal to test the upload:
+     ```bash
+     echo "Hello from the host terminal!" > ftp_test.txt
+     curl -T ftp_test.txt ftp://127.0.0.1:21 --user "$FTP_USER:$FTP_PASS"
+     ```
+     *(Replace $FTP_USER and $FTP_PASS with your literal FTP credentials)*
+     Finally, verify the file was uploaded directly to the WordPress directory:
+     ```bash
+     docker compose -f srcs/docker-compose.yml exec wordpress ls -l /var/www/html/
+     ```
+     *(You will see `ftp_test.txt` sitting right alongside your WordPress core files)*
 
 ## Project Description: Architecture & Technical Comparisons
 This project relies on several key technical decisions involving containerization, security, networking, and data persistence:
