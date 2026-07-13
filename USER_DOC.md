@@ -93,6 +93,11 @@ SHOW TABLES;       # Lists all 'wp_*' tables to prove active communication
 
 ### Adminer (Database GUI)
 * **How to Test:** Connect to `http://127.0.0.1:8080` in your browser.
+* **Login:** 
+    * Server: `mariadb`
+    * Database: `wordpress`
+    * User: `wpuser`
+    * Password: `[PASSWORD]` (stored in `secrets/db_password.txt`)
 * **Purpose:** Tests Adminer database dashboard functionality.
 * **Expected Response:** Loads the database graphical interface login dashboard successfully.
 
