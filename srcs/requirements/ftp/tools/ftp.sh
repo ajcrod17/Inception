@@ -4,7 +4,7 @@
 FTP_USER=$(cut -d ':' -f 1 /run/secrets/ftp_credentials)
 FTP_PASS=$(cut -d ':' -f 2 /run/secrets/ftp_credentials | tr -d '\n')
 
-# Check if user already exists
+# Check if user already exists (">/dev/null" prevents user info from being displayed on the screen.)
 if ! id "$FTP_USER" &>/dev/null; then
     echo "Creating FTP user: $FTP_USER"
     # Create the user but securely map them to the same UID (33) and GID (33) as www-data!
