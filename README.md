@@ -7,9 +7,17 @@ Inception is a system administration project that focuses on Docker and containe
 To build and run the infrastructure:
 1. Ensure you have Docker and Docker Compose installed.
 2. The `Makefile` at the root of the repository automates the entire process.
-3. Run `make all` to build the images, create the network, and start the containers.
+3. Use the following targets as needed:
+   - `make up`: create the required data folders, build the images, and start the containers in detached mode.
+   - `make down`: stop and remove the containers and network.
+   - `make start`: start existing containers without rebuilding them.
+   - `make stop`: stop running containers without removing them.
+   - `make restart`: restart the running containers.
+   - `make clean`: same as `make down`.
+   - `make fclean`: remove containers, volumes, images, and stored data for a full reset.
+   - `make re`: perform a full reset with `fclean` and then rebuild the stack with `all`.
 4. Navigate to `https://acaldeir.42.fr` in your browser. (Note: you must update your `/etc/hosts` file to point this domain to `127.0.0.1`).
-5. Run `make clean` to stop the containers, and `make fclean` to completely purge the volumes and data.
+5. Use `make all` for the default full build-and-start flow.
 
 ## Bonuses Included
 This project includes 5 additional services demonstrating advanced container orchestration:
