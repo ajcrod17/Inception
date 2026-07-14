@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Parse credentials from the secret file
-FTP_USER=$(cut -d ':' -f 1 /run/secrets/ftp_credentials)
-FTP_PASS=$(cut -d ':' -f 2 /run/secrets/ftp_credentials | tr -d '\n')
+FTP_USER=$(sed '1s/^\xEF\xBB\xBF//' /run/secrets/ftp_credentials | cut -d ':' -f 1 | tr -d '\r\n')
+FTP_PASS=$(sed '1s/^\xEF\xBB\xBF//' /run/secrets/ftp_credentials | cut -d ':' -f 2 | tr -d '\r\n')
 
 # Check if user already exists (">/dev/null" prevents user info from being displayed on the screen.)
 if ! id "$FTP_USER" &>/dev/null; then
@@ -10,9 +10,11 @@ if ! id "$FTP_USER" &>/dev/null; then
     # Create the user but securely map them to the same UID (33) and GID (33) as www-data!
     # This completely eliminates file permission conflicts between NGINX and the FTP server.
     useradd -u 33 -o -g 33 -d /var/www/html -s /bin/bash "$FTP_USER"
-    echo "$FTP_USER:$FTP_PASS" | chpasswd
     echo "User created successfully."
 fi
+
+# Always refresh the password so container restarts keep accepting the latest secret.
+echo "$FTP_USER:$FTP_PASS" | chpasswd
 
 # Ensure the empty directory for vsftpd jailing exists
 mkdir -p /var/run/vsftpd/empty

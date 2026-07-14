@@ -2,7 +2,7 @@
 
 # Wait for the MariaDB container to be fully booted and ready to accept connections
 echo "Waiting for MariaDB..."
-while ! mysqladmin ping -h"mariadb" -u"${MYSQL_USER}" -p"$(cat /run/secrets/db_password | tr -d '\n')" --silent; do
+while ! mysqladmin ping -h"mariadb" -u"${MYSQL_USER}" -p"$(sed '1s/^\xEF\xBB\xBF//' /run/secrets/db_password | tr -d '\r\n')" --silent; do
     sleep 2
 done
 echo "MariaDB is up and running!"
@@ -22,7 +22,7 @@ if [ ! -f /var/www/html/wp-config.php ]; then
     wp config create \
         --dbname="${MYSQL_DATABASE}" \
         --dbuser="${MYSQL_USER}" \
-        --dbpass="$(cat /run/secrets/db_password | tr -d '\n')" \
+        --dbpass="$(sed '1s/^\xEF\xBB\xBF//' /run/secrets/db_password | tr -d '\r\n')" \
         --dbhost="mariadb" \
         --allow-root
 

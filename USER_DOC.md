@@ -93,11 +93,12 @@ SHOW TABLES;       # Lists all 'wp_*' tables to prove active communication
 
 ### Adminer (Database GUI)
 * **How to Test:** Connect to `http://127.0.0.1:8080` in your browser.
-* **Login:** 
-    * Server: `mariadb`
-    * Database: `wordpress`
-    * User: `wpuser`
-    * Password: `[PASSWORD]` (stored in `secrets/db_password.txt`)
+* **Login:**
+  * System: MySQL
+  * Server: mariadb
+  * Database: wordpress
+  * User: root
+  * Password: [PASSWORD] (stored in secrets/db_root_password.txt)
 * **Purpose:** Tests Adminer database dashboard functionality.
 * **Expected Response:** Loads the database graphical interface login dashboard successfully.
 
@@ -117,11 +118,11 @@ SHOW TABLES;       # Lists all 'wp_*' tables to prove active communication
 * **Expected Response:** Shows the status as "Connected" along with live cache metrics and hits.
 
 ### FTP Server (vsftpd)
-* **How to Test (Read Directory):** Run `curl ftp://127.0.0.1/ --user ftp_user:ftp_pass` in your terminal.
+* **How to Test (Read Directory):** Run `curl ftp://127.0.0.1/ --user ftp_user:<ftp_password>` in your terminal.
 * **Purpose:** Verifies passive FTP server file integration and read permissions.
 * **Expected Response:** Displays a raw text directory listing of your remote WordPress volume directory.
 
 * **How to Test (Write/Upload a File):** 1. Create a dummy file locally: `echo "Hello from FTP evaluation" > test_ftp.txt`
-  2. Upload it via FTP: `curl -T test_ftp.txt ftp://127.0.0.1/ --user ftp_user:ftp_pass`
+  2. Upload it via FTP: `curl -T test_ftp.txt ftp://127.0.0.1/ --user ftp_user:<ftp_password>`
 * **Purpose:** Verifies that the FTP daemon has correct write privileges and maps properly to user ID 33 (`www-data`) without causing permission blocks inside the volume.
 * **Expected Response:** The upload finishes cleanly with a progress bar. You can instantly confirm it worked by running `docker exec wordpress ls -la /var/www/html` to see `test_ftp.txt` sitting safely inside your active WordPress files!
